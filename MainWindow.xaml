@@ -1,0 +1,93 @@
+﻿<Window x:Class="HT.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HT"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="500">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Close"
+                        Executed="CloseCommandHandler"/>
+    </Window.CommandBindings>
+    <Grid Margin="0,0,-0.4,0">
+        <GroupBox  x:Name="Process_params" Header="Process parameters" HorizontalAlignment="Left" Height="235" Margin="11,34,0,0" VerticalAlignment="Top" Width="181" Padding="10">
+            <StackPanel>
+                <TextBlock Text="Cooking temperature:"/>
+                <TextBox x:Name="Cooking_temp_value" MaxLength="5" PreviewTextInput="NumberValidationTextBox" Text=""/>
+                <TextBlock Text="Cooking pressure:"/>
+                <TextBox x:Name="Cooking_press_value" MaxLength="5" PreviewTextInput="NumberValidationTextBox" Text=""/>
+                <TextBlock Text="Cooking time:"/>
+                <TextBox x:Name="Cooking_time_value" MaxLength="5" PreviewTextInput="NumberValidationTextBox" Text=""/>
+                <TextBlock Text="Impregnation time:"/>
+                <TextBox x:Name="Impregnation_time_value" MaxLength="5" PreviewTextInput="NumberValidationTextBox" Text=""/>
+                <Button x:Name="SetValuesButton" Content="Set Values" Click="SetValuesButton_Click" Margin="10"/>
+                <TextBlock x:Name="Parameter_Status" HorizontalAlignment="Center" Text=""/>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox  x:Name="Process_values" Header="Process values" HorizontalAlignment="Left" Height="195" Margin="197,74,0,0" VerticalAlignment="Top" Width="281" Padding="10">
+            <StackPanel>
+                <WrapPanel Margin="5">
+                    <TextBlock x:Name="LI100" Margin="0,0,4,0" Text="LI100 level:"/>
+                    <Grid>
+                        <ProgressBar x:Name="LI100_prog" Height="20" Foreground="SkyBlue" Width="175" Maximum="300"/>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding ElementName=LI100_prog, Path=Value, StringFormat={}{0}}"></TextBlock>
+                    </Grid>
+                </WrapPanel>
+                <WrapPanel Margin="5">
+                    <TextBlock x:Name="LI200" Margin="0,0,4,0" Text="LI200 level:"/>
+                    <Grid>
+                        <ProgressBar x:Name="LI200_prog" Height="20" Foreground="SkyBlue" Width="175" Maximum="300"/>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding ElementName=LI200_prog, Path=Value, StringFormat={}{0}}"></TextBlock>
+                    </Grid>
+                </WrapPanel >
+                <WrapPanel Margin="5">
+                    <TextBlock x:Name="LI400" Margin="0,0,4,0" Text="LI400 level:"/>
+                    <Grid>
+                        <ProgressBar x:Name="LI400_prog" Height="20" Foreground="SkyBlue" Width="175" Maximum="300"/>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding ElementName=LI400_prog, Path=Value, StringFormat={}{0}}"></TextBlock>
+                    </Grid>
+                </WrapPanel>
+                <WrapPanel Margin="5">
+                    <TextBlock x:Name="PI300" Margin="0,0,4,0" Text="PI300 level:"/>
+                    <Grid>
+                        <ProgressBar x:Name="PI300_prog" Height="20" Foreground="Green" Width="175" Maximum="300"/>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding ElementName=PI300_prog, Path=Value, StringFormat={}{0}}"></TextBlock>
+                    </Grid>
+                </WrapPanel>
+                <WrapPanel Margin="5">
+                    <TextBlock x:Name="TI300" Margin="0,0,4,0" Text="TI300 level:"/>
+                    <Grid>
+                        <ProgressBar x:Name="TI300_prog" Height="20" Foreground="Red" Width="175" Maximum="30"/>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding ElementName=TI300_prog, Path=Value, StringFormat={}{0}}"></TextBlock>
+                    </Grid>
+                </WrapPanel>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Connection Status" HorizontalAlignment="Left" Height="70" Margin="11,274,0,0" VerticalAlignment="Top" Width="165">
+            <StackPanel>
+                <WrapPanel>
+                    <TextBlock x:Name="Connection_Status" Margin="0,0,4,0" Text="Status:"/>
+                    <TextBlock x:Name="Connection_Status_Value" Margin="0,0,4,0" Text="Disconnected"/>
+                </WrapPanel>
+                <WrapPanel>
+                    <Button x:Name="ConnectButton" Content="Connect" Click="ConnectButton_Click" Width="62.5" Margin="5"/>
+                    <Button x:Name="DisconnectButton" Content="Disconnect" Click="DisconnectButton_Click" Width="62.5" Margin="5"/>
+                </WrapPanel>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Process Status" HorizontalAlignment="Left" Height="70" Margin="313,274,0,0" VerticalAlignment="Top" Width="165">
+            <StackPanel>
+                <WrapPanel>
+                    <TextBlock x:Name="Process_Status" Margin="0,0,4,0" Text="Status:"/>
+                    <TextBlock x:Name="Process_Status_Value" Margin="0,0,4,0" Text="No process running"/>
+                </WrapPanel>
+                <WrapPanel>
+                    <Button x:Name="StartButton" Content="Start" Click="StartButton_Click"  Width="62.5" Margin="5"/>
+                    <Button x:Name="StopButton" Content="Stop" Click="StopButton_Click"  Width="62.5" Margin="5"/>
+                </WrapPanel>
+            </StackPanel>
+        </GroupBox>
+        <Button x:Name="Close_Button" Content="Close" HorizontalAlignment="Left" Command="ApplicationCommands.Close" Margin="11,10,0,0" VerticalAlignment="Top" Width="75"/>
+    </Grid>
+</Window>
