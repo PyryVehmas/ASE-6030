@@ -1,0 +1,57 @@
+
+R02 Konsta Pirttilahti konsta.pirttilahti@tuni.fi
+R02 Pyry Vehmas pyry.vehmas@tuni.fi
+
+
+Arvostelu (asteikko 0..3)
+Suunnitteludokumentti: 2
+Testausdokumentti: 2
+Toteutus: 2.5
+--> Kokonaisarvosana: 2
+
+
+Suunnitteludokumentti
+
+Lyhyesti: Dokumentissa on pääosin se mitä edellytetäänkin. Muutamissa kohdissa näkyy hieman huolimattomuutta.
+
+Dokumentti ei ole ulkoasultaan dokumenttipohjan mukainen. Typoja löytyi useita.
+
+KT 1: Kohdassa "poikkeukset" tulisi olla lista mahdollisia poikkeustilanteita, ja näihin tulisi viitata kohdasta "kuvaus" (ks. dokumenttipohja). Nyt kohta "poikkeukset" on hieman ylimalkainen.
+
+KT 3: tästä puuttuu kokonaan virhetilanteiden käsittely. Nämä olisivat siis poikkeuksia, kun kyse on käyttötapauksesta.
+
+2.3: Käyttöliittymän toimintaa ei ole selitetty mitenkään.
+
+3.1: MVC tuntuu hieman overkilliltä, jos view'n muodostaa vain muutama käyttöliittymän kontrolli. Edelleen view'tä ei tällöin hallita yhdestä paikasta, vaan käytännössä controller hallitsee sitä.
+
+3.2: Luokkakaavion funktioista puuttuu parametrien nimet. Luokalla MppClient ei ole riippuvuutta teidän tekemäänne event args -luokkaan. BatchProcessController-luokalla on tuskin 1:1-riippuvuutta event args -luokkaan, jos nämä argumentit luodaan aina uudelleen jokaista tapahtumaa varten.
+
+3.3.1: Tilakaavioissa ei yleensä käytetä "salmiakkia", vaan se on enemmän aktiviteettikaavion elementti. Ehkä olisi syytä lisätä tila "muodostetaan yhteyttä" tjsp. ja tehdä siitä tilasiirtymät onnistui/ei onnistunut?
+
+Tekstin perusteella vaikuttaa, että sulkeminen nimenomaan on mahdollista myös sekvenssin aikana. Tällöin sulkemiseen toki sisältyy sekvenssin pysäyttäminen.
+
+Muuten tilakaavio on havainnollinen.
+
+Sekvenssikaaviot ovat selkeitä ja havainnollistavat sovelluksen toimintaa hyvin.
+
+
+Testausdokumentti
+
+Lyhyesti: Testin kattavuus on tähän harjoitustyöhön sopiva. Testitapauksissa on pääosin hyvä ote, eli useimmiten satunnainen testaaja käsittänee, mitä pitää tehdä.
+
+Dokumentille ei ole annettu ollenkaan otsikkoa. Dokumentin tyyli ei aivan vastaa dokumenttipohjaa.
+
+Tekstissä on siellä täällä kohtia, jotka vaikuttavat siltä, että oikoluku on jäänyt vähälle.
+
+3.2.1: Kuvat tulee aina selittää tekstissä.
+
+JTJ3A1: Tästä olisi syytä olla viite PFC-kaavioihin, jotta testaaja voi todeta prosessin toteutuvan kuten halutaan.
+
+JTJ4A1: Miten testaaja osaa ajaa prosessin tilaan, jossa esiehto toteutuu?
+
+YTJ1A2: Mitkä ovat ne "oikeat" arvot, jotka tässä ensin syötetään?
+
+
+Toteutus
+
+KT4:n mukaan prosessia ei voida käynnistää, jos prosessiparametreja ei ole syötetty. Käytännössä prosessi kuitenkin käynnistyi ilman parametreja. Muuten sovellus näyttää toimivan kuten pitääkin.
